@@ -60,11 +60,12 @@ void simulationTwoResults();
 
 int main() {
     simulationOne();
-    printf("\nPart 1 Statistics (256 frames):\n");
+    printf("\nSimulationOne Stats:\n");
     printf("access count\ttlb hit count\tpage fault count\ttlb hit rate\tpage fault rate\n");
     simulationOneResults();
     simulationTwo();
     printf("%s", "\n");
+    printf("\nSimulationTwo Stats:\n");
     simulationTwoResults();
     return 0;
 }
