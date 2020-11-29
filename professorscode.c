@@ -63,15 +63,11 @@ int main(int argc, const char* argv[]) {
   }
   fclose(fcorr);
   fclose(fadd);
-  
   printf("ONLY READ FIRST 20 entries -- TODO: change to read all entries\n\n");
-  
   printf("ALL logical ---> physical assertions PASSED!\n");
   printf("!!! This doesn't work passed entry 24 in correct.txt, because of a duplicate page table entry\n");
   printf("--- you have to implement the PTE and TLB part of this code\n");
-
 //  printf("NOT CORRECT -- ONLY READ FIRST 20 ENTRIES... TODO: MAKE IT READ ALL ENTRIES\n");
-
   printf("\n\t\t...done.\n");
   return 0;
 }
