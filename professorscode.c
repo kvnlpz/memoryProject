@@ -6,6 +6,9 @@
 //  Copyright © 2020 William McCarthy. All rights reserved.
 //
 
+
+
+//LEFT THIS HERE FOR REFERENCE/IF I DECIDE TO START OVER
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

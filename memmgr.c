@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
 #pragma ide diagnostic ignored "cert-err34-c"
 
 
@@ -17,7 +18,7 @@
 //Also, your program need only be concerned with reading logical addresses and translating them to their
 //corresponding physical addresses. You don’t need to support writing to the logical address space.
 
-//http://www.cplusplus.com/reference/cstdio/fseek/
+//http://www.cplusplus.com/reference/cstdio/fseek/ leaving here for reference
 
 
 
@@ -91,7 +92,6 @@ void simulationOne() {
         fprintf(stderr, "address.txt not found \n");
         exit(FILE_ERROR);
     }
-
     FILE *correctFile = fopen("correct.txt", "r");
     if (correctFile == NULL) {
         fprintf(stderr, "correct.txt not found \n");
@@ -128,7 +128,6 @@ void simulationOne() {
         physicalAddressNew = frame * FRAME_SIZE + offset;
         int val = (int) (mainMemory[physicalAddressNew]);
         fseek(binFile, logic_add, 0);
-
         if (accessCount > 0 && accessCount % 200 == 0) {
             translationLookasideBufferHitCount[(accessCount / 200) - 1] = translationLookasideBufferCount;
             pageFaultCountArray[(accessCount / 200) - 1] = pageFaultCount;
@@ -138,7 +137,6 @@ void simulationOne() {
         assert(physicalAddressNew == physicalAddress);
         assert(value == val);
     }
-
     fclose(addressesFile);
     fclose(binFile);
     fclose(correctFile);
@@ -205,11 +203,9 @@ void simulationTwo() {
             pageFaultCountTwoArray[(accessCount / 200) - 1] = pageFaultCount;
             countTwo[(accessCount / 200) - 1] = accessCount;
         }
-
         printf("logical: %5u (page: %3u, offset: %3u) ---> physical: %5u -- passed\n", logicalAddress, page, offset, physAddress);
         assert(value == val);
     }
-
     fclose(addressesFile);
     fclose(binFile);
     fclose(correctFile);
@@ -235,11 +231,9 @@ int findInTranslationLookasideBuffer(unsigned x) {
 
 
 void updateTranslationLookasideBuffer(unsigned page) {
-
     translationLookasideBuffer[translationLookasideBufferCurrent][1] = tableOfPages[page];
     translationLookasideBuffer[translationLookasideBufferCurrent][0] = page;
     translationLookasideBufferCurrent = (translationLookasideBufferCurrent + 1) % 16;
-
 }
 
 unsigned getFrame(unsigned logic_add, unsigned page, int *pageFaultCount) {
@@ -303,7 +297,7 @@ int availableFrame(unsigned page) {
         return val;
     }
 
-    // CHecking if the QUEUE is full
+    // Checking if the QUEUE is full
     if (queueHead == queueTail && pageQueue[queueTail] != -1) {
         pageQueue[queueHead] = page;
         int ret = queueHead;
