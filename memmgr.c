@@ -61,6 +61,7 @@ void simulationTwoResults();
 int main() {
     simulationOne();
     printf("\nSimulationOne Stats:\n");
+
     simulationOneResults();
     simulationTwo();
     printf("%s", "\n");
